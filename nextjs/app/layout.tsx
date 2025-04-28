@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Inter } from "next/font/google";
 import localFont from "next/font/local";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
 const pretendard = localFont({
   src: [
@@ -65,7 +71,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${pretendard.variable} antialiased`}>{children}</body>
+      <body className={`${pretendard.variable} ${inter.variable} antialiased`}>
+        {children}
+      </body>
     </html>
   );
 }
