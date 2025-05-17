@@ -1,15 +1,10 @@
 import { Suspense } from "react";
+import { SkeletonCard } from "@/components/(KOR)/(login)/SkeletonCard";
 import ForgotPasswordContent from "@/components/(KOR)/(login)/ForgotPasswordContent";
 
 export default function ForgotPasswordPage() {
   return (
-    <Suspense
-      fallback={
-        <div className="w-full min-h-screen flex justify-center items-center">
-          로딩 중...
-        </div>
-      }
-    >
+    <Suspense fallback={<SkeletonCard />}>
       <ForgotPasswordContent />
     </Suspense>
   );
