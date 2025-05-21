@@ -94,7 +94,7 @@ const LoginForm = () => {
                           <Input
                             type="email"
                             placeholder="example@company.com"
-                            className="font-inter text-sm text-title-gray mt-1 w-full px-4 p-2 h-10"
+                            className="font-inter text-sm text-title-gray w-full px-4 p-2 h-10"
                             {...field}
                           />
                         </FormControl>
@@ -116,7 +116,7 @@ const LoginForm = () => {
                           <Input
                             type="password"
                             placeholder="••••••••"
-                            className="font-inter text-sm text-title-gray mt-1 w-full px-4 p-2 h-10"
+                            className="font-inter text-sm text-title-gray w-full px-4 p-2 h-10"
                             {...field}
                           />
                         </FormControl>

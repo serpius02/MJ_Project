@@ -40,6 +40,7 @@ export default function RegisterPage() {
       email: "",
       password: "",
       passwordConfirm: "",
+      username: "",
     },
   });
 
@@ -52,6 +53,7 @@ export default function RegisterPage() {
         email: data.email,
         password: data.password,
         passwordConfirm: data.passwordConfirm,
+        username: data.username,
       });
 
       if (response.error) {
@@ -96,8 +98,30 @@ export default function RegisterPage() {
                           <Input
                             type="email"
                             placeholder="example@company.com"
-                            className="font-inter text-sm text-title-gray mt-1 w-full px-4 p-2 h-10"
+                            className="font-inter text-sm text-title-gray w-full px-4 p-2 h-10"
                             {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                </div>
+                <div>
+                  <FormField
+                    control={form.control}
+                    name="username"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel className="font-inter font-medium text-sm text-body-gray">
+                          닉네임
+                        </FormLabel>
+                        <FormControl>
+                          <Input
+                            {...field}
+                            type="text"
+                            placeholder="닉네임"
+                            className="font-inter text-sm text-title-gray w-full px-4 p-2 h-10"
                           />
                         </FormControl>
                         <FormMessage />
@@ -119,7 +143,7 @@ export default function RegisterPage() {
                             {...field}
                             type="password"
                             placeholder="••••••••"
-                            className="font-inter text-sm text-title-gray mt-1 w-full px-4 p-2 h-10"
+                            className="font-inter text-sm text-title-gray w-full px-4 p-2 h-10"
                           />
                         </FormControl>
                         <FormMessage />
@@ -141,7 +165,7 @@ export default function RegisterPage() {
                             {...field}
                             type="password"
                             placeholder="••••••••"
-                            className="font-inter text-sm text-title-gray mt-1 w-full px-4 p-2 h-10"
+                            className="font-inter text-sm text-title-gray w-full px-4 p-2 h-10"
                           />
                         </FormControl>
                         <FormMessage />

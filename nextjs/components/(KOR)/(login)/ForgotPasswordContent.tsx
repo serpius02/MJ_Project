@@ -100,7 +100,7 @@ export default function ForgotPasswordContent() {
                           {...field}
                           type="email"
                           placeholder="example@company.com"
-                          className="font-inter text-sm text-title-gray mt-1 w-full px-4 p-2 h-10"
+                          className="font-inter text-sm text-title-gray w-full px-4 p-2 h-10"
                         />
                       </FormControl>
                       <FormMessage />

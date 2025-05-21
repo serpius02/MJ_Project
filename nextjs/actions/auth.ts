@@ -20,7 +20,26 @@ export async function getUserSession() {
   return { status: "success", user: data?.user };
 }
 
-// Sign in 할 때, 이미 존재하는 유저인지 확인 후, 존재하지 않을 경우 user_profiles 테이블에 저장
+export async function isUsernameTaken(username: string) {
+  const supabase = await createClient();
+
+  // raw_user_meta_data JSON 필드에서 username 검색
+  const { data, error } = await supabase
+    .from("auth.users")
+    .select("id")
+    .eq("raw_user_meta_data->>username", username)
+    .maybeSingle();
+
+  if (error) {
+    return { error: true, message: "닉네임이 이미 존재합니다." };
+  }
+
+  return {
+    exists: !!data,
+    status: "success",
+  };
+}
+
 export const signIn = async ({
   email,
   password,
@@ -63,7 +82,9 @@ export const signIn = async ({
     };
   }
 
-  // User successfully logged in
+  // // 로그인 성공 시 users 테이블 동기화
+  // await syncUserToDatabase(supabase, data.user);
+
   return {
     success: true,
     message: "로그인에 성공했습니다.",
@@ -75,19 +96,23 @@ export const signIn = async ({
   };
 };
 
+// signUp 함수 수정
 export const signUp = async ({
   email,
   password,
   passwordConfirm,
+  username,
 }: {
   email: string;
   password: string;
   passwordConfirm: string;
+  username: string;
 }) => {
   const signUpValidation = signUpSchema.safeParse({
     email,
     password,
     passwordConfirm,
+    username,
   });
 
   if (!signUpValidation.success) {
@@ -99,12 +124,25 @@ export const signUp = async ({
     };
   }
 
+  const isNameTaken = await isUsernameTaken(username);
+  if (isNameTaken.exists) {
+    return {
+      error: true,
+      message: "이미 사용중인 닉네임입니다.",
+    };
+  }
+
   // supabase authentication from here
   const supabase = await createClient();
 
   const { data, error } = await supabase.auth.signUp({
     email,
     password,
+    options: {
+      data: {
+        username,
+      },
+    },
   });
 
   if (error) {
@@ -228,3 +266,35 @@ export const resetPassword = async ({
     message: "비밀번호 변경이 완료되었습니다.",
   };
 };
+
+// export async function syncUserToDatabase(supabase: SupabaseClient, user: User) {
+//   if (!user) return;
+
+//   // 먼저 사용자가 이미 users 테이블에 존재하는지 확인
+//   const { data: existingUser } = await supabase
+//     .from("users")
+//     .select("id")
+//     .eq("id", user.id)
+//     .single();
+
+//   // 사용자가 존재하지 않으면 추가
+//   if (!existingUser) {
+//     const { error } = await supabase.from("users").insert({
+//       id: user.id,
+//       email: user.email,
+//       display_name:
+//         user.user_metadata?.username || user.email?.split("@")[0] || "",
+//       image_url: user.user_metadata?.avatar_url || null,
+//     });
+
+//     if (error) {
+//       console.error("사용자 데이터 동기화 중 오류가 발생했습니다.", error);
+//       return {
+//         error: true,
+//         message: "사용자 데이터 동기화 중 오류가 발생했습니다.",
+//       };
+//     }
+//   }
+
+//   return { error: false };
+// }

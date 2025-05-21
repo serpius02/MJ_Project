@@ -3,29 +3,34 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Button } from "../ui/button";
-import { Zap } from "lucide-react";
 import { ModeToggle } from "@/components/ModeToggle";
-import LogoutButton from "./(login)/LogoutButton";
-import { useEffect } from "react";
-import { useState } from "react";
-import { User } from "@supabase/supabase-js";
-import { createClient } from "@/utils/supabase/client";
+import ProfileButton from "./(login)/ProfileButton";
+import useUser from "@/lib/store/user";
+import UpgradePlanButton from "./(login)/UpgradePlanButton";
+
+// import { useEffect } from "react";
+// import { useState } from "react";
+// import { User } from "@supabase/supabase-js";
+// import { createClient } from "@/utils/supabase/client";
 
 const NavBar = () => {
   const pathname = usePathname();
-  const [user, setUser] = useState<User | null>(null);
 
-  useEffect(() => {
-    const getUser = async () => {
-      const supabase = await createClient();
-      const {
-        data: { user },
-      } = await supabase.auth.getUser();
-      setUser(user);
-    };
-    getUser();
-  }, []);
+  // Zustand를 사용해 사용자 정보를 읽어오는 함수
+  const user = useUser((state) => state.user);
+
+  // const [user, setUser] = useState<User | null>(null);
+
+  // useEffect(() => {
+  //   const getUser = async () => {
+  //     const supabase = await createClient();
+  //     const {
+  //       data: { user },
+  //     } = await supabase.auth.getUser();
+  //     setUser(user);
+  //   };
+  //   getUser();
+  // }, []);
 
   const navItems = [
     { name: "뉴스", href: "/ko/news" },
@@ -63,15 +68,12 @@ const NavBar = () => {
             );
           })}
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4">
+          <UpgradePlanButton />
           <ModeToggle />
           {/* TODO: 프로필 버튼으로 대체 */}
-          <LogoutButton user={user} />
+          <ProfileButton user={user} />
           {/* TODO: 구독 버튼 기능 추가 */}
-          <Button className="flex items-center gap-1 font-inter text-title-gray shrink-0 whitespace-nowrap min-w-[110px] px-4 rounded-2xl">
-            <Zap className="w-4 h-4" />
-            업그레이드
-          </Button>
         </div>
       </div>
     </nav>

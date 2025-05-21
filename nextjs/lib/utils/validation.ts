@@ -64,7 +64,17 @@ export const signInSchema = z.object({
 
 // 회원가입 스키마
 export const signUpSchema = z
-  .object({ email: emailSchema })
+  .object({
+    email: emailSchema,
+    username: z
+      .string()
+      .min(2, "닉네임은 최소 2자 이상이어야 합니다.")
+      .max(10, "닉네임은 최대 10자까지 가능합니다.")
+      .regex(
+        /^[a-zA-Z0-9가-힣_]+$/,
+        "닉네임은 영문, 숫자, 한글, 언더스코어(_)만 사용 가능합니다."
+      ),
+  })
   .and(passwordMatchSchema);
 
 export type PasswordSchema = z.infer<typeof passwordSchema>;
