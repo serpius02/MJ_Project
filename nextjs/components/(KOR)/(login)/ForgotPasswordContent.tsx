@@ -25,10 +25,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { forgotPassword } from "@/actions/auth";
-import {
-  forgotPasswordSchema,
-  ForgotPasswordSchema,
-} from "@/lib/utils/validation";
+import { forgotPasswordSchema, ForgotPasswordSchema } from "@/lib/schemas/auth";
 import { Separator } from "@/components/ui/separator";
 import { z } from "zod";
 
