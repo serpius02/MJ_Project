@@ -133,7 +133,7 @@ export default function TrendingNewsCarousel() {
         className="w-full max-w-8xl"
       >
         <CarouselContent className="-ml-2">
-          {sampleNewsItems.map((item, index) => (
+          {sampleNewsItems.map((item) => (
             <CarouselItem
               key={item.id}
               className="pl-2 basis-1/2 md:basis-1/3 lg:basis-1/5"
