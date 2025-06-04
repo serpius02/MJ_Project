@@ -20,14 +20,15 @@ export async function getUserSession() {
   return { status: "success", user: data?.user };
 }
 
+// TODO: 닉네임 중복 체크 로직 완성시켜야 함!
 export async function isUsernameTaken(username: string) {
   const supabase = await createClient();
 
   // raw_user_meta_data JSON 필드에서 username 검색
   const { data, error } = await supabase
-    .from("auth.users")
+    .from("users")
     .select("id")
-    .eq("raw_user_meta_data->>username", username)
+    .eq("display_name", username)
     .maybeSingle();
 
   if (error) {
