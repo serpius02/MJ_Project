@@ -8,7 +8,11 @@ const nextConfig: NextConfig = {
         hostname: "lh3.googleusercontent.com",
         pathname: "**",
       },
-      // 필요한 경우 다른 패턴도 추가
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        pathname: "**",
+      },
     ],
   },
   /* 기존 config options */

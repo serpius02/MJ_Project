@@ -3,7 +3,7 @@ import GoogleSignIn from "./GoogleSignIn";
 import React, { useState } from "react";
 import { signIn } from "@/actions/auth";
 import { useRouter } from "next/navigation";
-import { SignInSchema, signInSchema } from "@/lib/utils/validation";
+import { SignInSchema, signInSchema } from "@/lib/schemas/auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
@@ -36,6 +36,7 @@ const LoginForm = () => {
 
   // 로그인 폼 유효성 검사 (FormMessage에서 바로 표시됨)
   const form = useForm<SignInSchema>({
+    mode: "all",
     resolver: zodResolver(signInSchema),
     defaultValues: {
       email: "",

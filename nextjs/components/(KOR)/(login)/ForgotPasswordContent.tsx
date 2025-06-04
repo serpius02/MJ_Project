@@ -40,6 +40,7 @@ export default function ForgotPasswordContent() {
   const [isLoading, setIsLoading] = useState(false); // Add loading state
 
   const form = useForm<ForgotPasswordSchema>({
+    mode: "all",
     resolver: zodResolver(forgotPasswordSchema),
     defaultValues: {
       email: decodeURIComponent(searchParams.get("email") ?? ""),

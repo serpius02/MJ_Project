@@ -6,7 +6,7 @@ import {
   resetPasswordSchema,
   signInSchema,
   signUpSchema,
-} from "@/lib/utils/validation";
+} from "@/lib/schemas/auth";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -266,35 +266,3 @@ export const resetPassword = async ({
     message: "비밀번호 변경이 완료되었습니다.",
   };
 };
-
-// export async function syncUserToDatabase(supabase: SupabaseClient, user: User) {
-//   if (!user) return;
-
-//   // 먼저 사용자가 이미 users 테이블에 존재하는지 확인
-//   const { data: existingUser } = await supabase
-//     .from("users")
-//     .select("id")
-//     .eq("id", user.id)
-//     .single();
-
-//   // 사용자가 존재하지 않으면 추가
-//   if (!existingUser) {
-//     const { error } = await supabase.from("users").insert({
-//       id: user.id,
-//       email: user.email,
-//       display_name:
-//         user.user_metadata?.username || user.email?.split("@")[0] || "",
-//       image_url: user.user_metadata?.avatar_url || null,
-//     });
-
-//     if (error) {
-//       console.error("사용자 데이터 동기화 중 오류가 발생했습니다.", error);
-//       return {
-//         error: true,
-//         message: "사용자 데이터 동기화 중 오류가 발생했습니다.",
-//       };
-//     }
-//   }
-
-//   return { error: false };
-// }

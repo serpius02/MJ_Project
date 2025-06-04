@@ -33,7 +33,7 @@ export async function updateSession(request: NextRequest) {
   // supabase.auth.getUser(). A simple mistake could make it very hard to debug
   // issues with users being randomly logged out.
 
-  // 앞으로도 모든 protected route에 대해서는 middleware에서 일괄적으로 처리해야 함
+  // 모든 protected route에 대해서는 middleware에서 일괄적으로 처리해야 함
   const {
     data: { user },
   } = await supabase.auth.getUser();

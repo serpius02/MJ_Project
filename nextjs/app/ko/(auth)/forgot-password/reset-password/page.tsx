@@ -24,7 +24,7 @@ import { z } from "zod";
 import { resetPassword } from "@/actions/auth";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
-import { resetPasswordSchema } from "@/lib/utils/validation";
+import { resetPasswordSchema } from "@/lib/schemas/auth";
 
 export default function ResetPasswordPage() {
   const [serverError, setServerError] = useState<string | null>(null);

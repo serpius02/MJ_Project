@@ -19,6 +19,7 @@ import {
   Loader2,
   CircleHelp,
   ChevronDown,
+  Settings2,
 } from "lucide-react";
 import { User } from "@supabase/supabase-js";
 import { signOut } from "@/actions/auth";
@@ -43,6 +44,8 @@ const ProfileButton = ({ user }: { user: User | null }) => {
       setLoading(false);
     }
   };
+
+  const isAdmin = user?.user_metadata.role === "admin";
 
   // TODO: 페이지 추가 (도움말, 계정설정, 프로필 설정) 및 미들웨어 추가 조정
   return (
@@ -72,7 +75,7 @@ const ProfileButton = ({ user }: { user: User | null }) => {
               className="w-full font-inter flex justify-between items-center text-title-primary group"
             >
               도움말
-              <CircleHelp className="w-4 h-4 text-title-primary transition-transform duration-200 group-hover:-translate-x-0.5" />
+              <CircleHelp className="w-4 h-4 text-title-primary transition-transform duration-200 group-hover:scale-120" />
             </Button>
           </Link>
           <Link href="/ko/profile" className="block">
@@ -81,9 +84,20 @@ const ProfileButton = ({ user }: { user: User | null }) => {
               className="w-full font-inter flex justify-between items-center text-title-primary group"
             >
               계정 설정
-              <LayoutDashboard className="w-4 h-4 text-title-primary transition-transform duration-200 group-hover:-translate-x-0.5" />
+              <Settings2 className="w-4 h-4 text-title-primary transition-transform duration-200 group-hover:scale-120" />
             </Button>
           </Link>
+          {isAdmin && (
+            <Link href="/ko/admin-dashboard" className="block">
+              <Button
+                variant="ghost"
+                className="w-full font-inter flex justify-between items-center text-title-primary group"
+              >
+                관리자 대시보드
+                <LayoutDashboard className="w-4 h-4 text-title-primary transition-transform duration-200 group-hover:scale-120" />
+              </Button>
+            </Link>
+          )}
         </div>
         <Separator className="my-2" />
         {user ? (
@@ -100,7 +114,7 @@ const ProfileButton = ({ user }: { user: User | null }) => {
                 <span className="font-inter font-medium text-title-gray">
                   로그아웃
                 </span>
-                <LogOut className="w-4 h-4 text-title-gray transition-transform duration-200 group-hover:-translate-x-0.5" />
+                <LogOut className="w-4 h-4 text-title-gray transition-transform duration-200 group-hover:scale-120" />
               </>
             )}
           </Button>
@@ -111,7 +125,7 @@ const ProfileButton = ({ user }: { user: User | null }) => {
               className="w-full font-inter flex justify-between items-center text-title-primary group"
             >
               로그인
-              <LogIn className="w-4 h-4 text-title-primary transition-transform duration-200 group-hover:-translate-x-0.5" />
+              <LogIn className="w-4 h-4 text-title-primary transition-transform duration-200 group-hover:scale-120" />
             </Button>
           </Link>
         )}

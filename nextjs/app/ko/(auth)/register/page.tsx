@@ -25,7 +25,7 @@ import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { signUp } from "@/actions/auth";
-import { signUpSchema } from "@/lib/utils/validation";
+import { signUpSchema } from "@/lib/schemas/auth";
 import { z } from "zod";
 
 // TODO: 회원가입 약관 넣어야 하나?
@@ -35,6 +35,7 @@ export default function RegisterPage() {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof signUpSchema>>({
+    mode: "all",
     resolver: zodResolver(signUpSchema),
     defaultValues: {
       email: "",
