@@ -11,6 +11,12 @@ const compat = new FlatCompat({
 
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
+  {
+    ignores: [
+      "**/lib/types/database.types.ts", // database.types.ts 파일 제외
+      "**/types/database.types.ts", // 혹시 다른 경로에 있을 경우
+    ],
+  },
 ];
 
 export default eslintConfig;
