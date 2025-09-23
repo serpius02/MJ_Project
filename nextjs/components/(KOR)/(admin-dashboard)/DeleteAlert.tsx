@@ -15,7 +15,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { deleteBlogById } from "@/lib/actions/(admin-dashboard)/blog";
+import { deleteBlogById } from "@/app/ko/admin-dashboard/_actions/blog";
 import { toast } from "sonner";
 
 // TODO: 여기도 toast 메시지 스타일링

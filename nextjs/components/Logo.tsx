@@ -1,89 +1,98 @@
-import React from "react";
+"use client";
+
+import React, { useRef, useEffect } from "react";
+import gsap from "gsap";
+import Icon from "@/components/Icon";
 
 interface LogoProps {
   width?: number;
   height?: number;
   className?: string;
+  showText?: boolean;
+  text?: string;
+  textClassName?: string;
 }
 
-const Logo = ({ width = 32, height = 32, className = "" }: LogoProps) => {
+const Logo = ({
+  width = 32,
+  height = 32,
+  className = "",
+  showText = false,
+  text = "엠제이에듀",
+  textClassName = "font-nanum font-medium whitespace-pre text-black dark:text-white",
+}: LogoProps) => {
+  const logoRef = useRef<SVGSVGElement>(null);
+  const textRef = useRef<HTMLSpanElement>(null);
+
+  // 로고 애니메이션
+  useEffect(() => {
+    if (logoRef.current) {
+      // 전체 로고 페이드인
+      gsap.fromTo(
+        logoRef.current,
+        { opacity: 0, scale: 0.8 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.6,
+          ease: "back.out(1.2)",
+        }
+      );
+    }
+  }, []);
+
+  // 텍스트 애니메이션
+  useEffect(() => {
+    if (textRef.current && showText) {
+      gsap.fromTo(
+        textRef.current,
+        { opacity: 0, x: -10 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.4,
+          ease: "power2.out",
+          delay: 0.3,
+        }
+      );
+    }
+  }, [showText]);
+
+  // showText가 false일 때는 Icon만 반환 (추가 래퍼 없이)
+  if (!showText) {
+    return (
+      <Icon
+        ref={logoRef}
+        name="logo"
+        className={`${className} transition-all duration-200 hover:scale-110 flex-shrink-0`}
+        style={{
+          width: width,
+          height: height,
+          opacity: 0, // GSAP이 제어하도록 초기값 설정
+          display: "block",
+        }}
+      />
+    );
+  }
+
+  // showText가 true일 때만 래퍼 div 사용
   return (
-    <svg
-      width={width}
-      height={height}
-      viewBox="0 0 36 36"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
-      <g clipPath="url(#clip0_3014_8110)">
-        <g clipPath="url(#clip1_3014_8110)">
-          <rect
-            x="4.5"
-            y="4.5"
-            width="27"
-            height="27"
-            fill="black"
-            stroke="#4497F7"
-            strokeWidth="2.25"
-          />
-          <rect
-            x="1.125"
-            y="1.125"
-            width="6.75"
-            height="6.75"
-            fill="white"
-            stroke="#4497F7"
-            strokeWidth="2.25"
-          />
-          <rect
-            x="28.125"
-            y="1.125"
-            width="6.75"
-            height="6.75"
-            fill="white"
-            stroke="#4497F7"
-            strokeWidth="2.25"
-          />
-          <rect
-            x="1.125"
-            y="28.125"
-            width="6.75"
-            height="6.75"
-            fill="white"
-            stroke="#4497F7"
-            strokeWidth="2.25"
-          />
-          <rect
-            x="28.125"
-            y="28.125"
-            width="6.75"
-            height="6.75"
-            fill="white"
-            stroke="#4497F7"
-            strokeWidth="2.25"
-          />
-          <path
-            d="M10.6875 25.3125L25.3125 10.6875"
-            stroke="white"
-            strokeWidth="2.25"
-          />
-          <path
-            d="M19.6875 25.3125L25.3125 19.6875"
-            stroke="white"
-            strokeWidth="2.25"
-          />
-        </g>
-      </g>
-      <defs>
-        <clipPath id="clip0_3014_8110">
-          <rect width="36" height="36" fill="white" />
-        </clipPath>
-        <clipPath id="clip1_3014_8110">
-          <rect width="36" height="36" fill="white" />
-        </clipPath>
-      </defs>
-    </svg>
+    <div className="flex items-center gap-2">
+      <Icon
+        ref={logoRef}
+        name="logo"
+        className={`${className} transition-all duration-200 hover:scale-110 block`}
+        style={{
+          width: width,
+          height: height,
+          opacity: 0, // GSAP이 제어하도록 초기값 설정
+        }}
+      />
+
+      <span ref={textRef} className={textClassName} style={{ opacity: 0 }}>
+        {text}
+      </span>
+    </div>
   );
 };
 

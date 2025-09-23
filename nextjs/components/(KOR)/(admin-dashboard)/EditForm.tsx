@@ -3,11 +3,11 @@
 import React from "react";
 
 import BlogForm from "./BlogForm";
-import { BlogDetail } from "@/lib/types";
-import { updateBlogDetailById } from "@/lib/actions/(admin-dashboard)/blog";
+import { BlogDetail } from "@/types";
+import { updateBlogDetailById } from "@/app/ko/admin-dashboard/_actions/blog";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import { BlogFormSchemaType } from "@/lib/schemas/(admin-dashboard)/blogpost";
+import { BlogFormSchemaType } from "@/app/ko/admin-dashboard/_schemas/blogpost";
 
 // EditForm은 건내받은 데이터를 이용해 handleSubmit을 블로그 게시글을 수정하는 함수로 지정
 export default function EditForm({ blog }: { blog: BlogDetail }) {
@@ -22,14 +22,12 @@ export default function EditForm({ blog }: { blog: BlogDetail }) {
 
     if (error) {
       toast.error(
-        <span className="font-inter text-sm">
-          블로그 게시글 수정에 실패했습니다.
-        </span>,
+        <span className="text-[14px]">블로그 게시글 수정에 실패했습니다.</span>,
         {
           description: (
-            <pre className="mt-2 w-full rounded-md bg-slate-950 p-4">
+            <pre className="mt-2 w-full rounded-md bg-card p-4 border">
               <code
-                className="text-white"
+                className="text-foreground text-[12px]"
                 style={{
                   whiteSpace: "pre-wrap",
                   wordBreak: "break-all",
@@ -45,20 +43,18 @@ export default function EditForm({ blog }: { blog: BlogDetail }) {
     }
 
     toast.success(
-      <span className="font-inter text-sm">
-        블로그 게시글이 수정되었습니다.
-      </span>,
+      <span className="text-[14px]">블로그 게시글이 수정되었습니다.</span>,
       {
         description: (
-          <pre className="mt-2 w-full rounded-md bg-slate-950 p-4">
+          <pre className="mt-2 w-full rounded-md bg-card p-4 border">
             <code
-              className="text-white"
+              className="text-foreground text-[12px]"
               style={{
                 whiteSpace: "pre-wrap",
                 wordBreak: "break-all",
               }}
             >
-              <span className="font-inter text-sm">
+              <span className="text-[12px]">
                 {data.title}을 수정했습니다. 대쉬보드로 이동합니다.
               </span>
             </code>

@@ -19,19 +19,27 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
-import { signUp } from "@/actions/auth";
-import { signUpSchema } from "@/lib/schemas/auth";
+import { signUp, isUsernameTaken } from "@/app/ko/(auth)/_actions/auth";
+import { signUpSchema } from "@/app/ko/(auth)/_schemas/auth";
 import { z } from "zod";
 
 // TODO: 회원가입 약관 넣어야 하나?
+// TODO: 서버 액션, useActionState, Form (next/form)을 활용해서 코드 바꿔야 할 듯. 물론 스타일링도
 export default function RegisterPage() {
   const [serverError, setServerError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  // 중복확인 상태 추가
+  const [usernameCheckStatus, setUsernameCheckStatus] = useState<
+    "unchecked" | "checking" | "available" | "taken"
+  >("unchecked");
+  const [lastCheckedUsername, setLastCheckedUsername] = useState<string>("");
+
   const router = useRouter();
 
   const form = useForm<z.infer<typeof signUpSchema>>({
@@ -44,6 +52,44 @@ export default function RegisterPage() {
       username: "",
     },
   });
+
+  // Add this to watch for username changes
+  const watchedUsername = form.watch("username");
+
+  // Add this useEffect to reset status when username changes
+  useEffect(() => {
+    if (
+      watchedUsername !== lastCheckedUsername &&
+      usernameCheckStatus !== "unchecked"
+    ) {
+      setUsernameCheckStatus("unchecked");
+    }
+  }, [watchedUsername, lastCheckedUsername, usernameCheckStatus]);
+
+  // 중복확인 버튼 핸들러
+  const handleUsernameCheck = useCallback(async () => {
+    const currentUsername = form.getValues("username");
+
+    setUsernameCheckStatus("checking");
+    setLastCheckedUsername(currentUsername);
+
+    try {
+      const result = await isUsernameTaken(currentUsername);
+
+      if (result.error) {
+        setUsernameCheckStatus("unchecked");
+        alert(result.message);
+      } else if (result.exists) {
+        setUsernameCheckStatus("taken");
+      } else {
+        setUsernameCheckStatus("available");
+      }
+    } catch (error) {
+      console.error("닉네임 체크 에러:", error);
+      setUsernameCheckStatus("unchecked");
+      alert("닉네임 확인 중 오류가 발생했습니다.");
+    }
+  }, [form]);
 
   const handleSubmit = async (data: z.infer<typeof signUpSchema>) => {
     setServerError(null);
@@ -71,14 +117,15 @@ export default function RegisterPage() {
       setIsLoading(false);
     }
   };
+
   return (
     <main className="w-full min-h-screen flex justify-center items-center">
       <Card className="flex flex-col w-[400px]">
         <CardHeader>
-          <CardTitle className="text-3xl w-full text-center font-inter font-bold mb-6">
+          <CardTitle className="text-[24px] w-full text-center font-medium mb-6 text-base-primary">
             회원가입
           </CardTitle>
-          <CardDescription className="font-inter text-sm text-title-gray">
+          <CardDescription className="text-[14px] text-base-secondary">
             회원가입을 위한 정보를 입력해주세요.
           </CardDescription>
         </CardHeader>
@@ -92,14 +139,14 @@ export default function RegisterPage() {
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="font-inter font-medium text-sm text-body-gray">
+                        <FormLabel className="font-medium text-[14px] text-base-secondary">
                           이메일
                         </FormLabel>
                         <FormControl>
                           <Input
                             type="email"
                             placeholder="example@company.com"
-                            className="font-inter text-sm text-title-gray w-full px-4 p-2 h-10"
+                            className="text-[14px] text-base-primary placeholder:text-base-secondary w-full px-4 p-2 h-10"
                             {...field}
                           />
                         </FormControl>
@@ -114,17 +161,54 @@ export default function RegisterPage() {
                     name="username"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="font-inter font-medium text-sm text-body-gray">
+                        <FormLabel className="font-medium text-[14px] text-base-secondary">
                           닉네임
                         </FormLabel>
                         <FormControl>
-                          <Input
-                            {...field}
-                            type="text"
-                            placeholder="닉네임"
-                            className="font-inter text-sm text-title-gray w-full px-4 p-2 h-10"
-                          />
+                          <div className="flex gap-2">
+                            <Input
+                              {...field}
+                              type="text"
+                              placeholder="닉네임"
+                              className="text-[14px] text-base-primary placeholder:text-base-secondary flex-1 px-4 p-2 h-10"
+                            />
+                            <Button
+                              type="button"
+                              variant="outline"
+                              className="text-[14px] text-base-primary px-4 h-10"
+                              onClick={handleUsernameCheck}
+                              disabled={usernameCheckStatus === "checking"}
+                            >
+                              {usernameCheckStatus === "checking"
+                                ? "확인중..."
+                                : "중복확인"}
+                            </Button>
+                          </div>
                         </FormControl>
+
+                        {/* 상태 메시지 */}
+                        {!form.formState.errors.username && (
+                          <>
+                            {usernameCheckStatus === "available" && (
+                              <p className="text-[14px] font-medium text-success">
+                                사용 가능한 닉네임입니다.
+                              </p>
+                            )}
+                            {usernameCheckStatus === "taken" && (
+                              <p className="text-[14px] font-medium text-error">
+                                이미 사용중인 닉네임입니다.
+                              </p>
+                            )}
+                            {usernameCheckStatus === "unchecked" &&
+                              watchedUsername &&
+                              watchedUsername.length >= 2 && (
+                                <p className="text-[14px] font-medium text-amber-600 dark:text-amber-400">
+                                  닉네임 중복확인을 해주세요.
+                                </p>
+                              )}
+                          </>
+                        )}
+
                         <FormMessage />
                       </FormItem>
                     )}
@@ -136,7 +220,7 @@ export default function RegisterPage() {
                     name="password"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="font-inter font-medium text-sm text-body-gray">
+                        <FormLabel className="font-medium text-[14px] text-base-secondary">
                           비밀번호
                         </FormLabel>
                         <FormControl>
@@ -144,7 +228,7 @@ export default function RegisterPage() {
                             {...field}
                             type="password"
                             placeholder="••••••••"
-                            className="font-inter text-sm text-title-gray w-full px-4 p-2 h-10"
+                            className="text-[14px] text-base-primary placeholder:text-base-secondary w-full px-4 p-2 h-10"
                           />
                         </FormControl>
                         <FormMessage />
@@ -158,7 +242,7 @@ export default function RegisterPage() {
                     name="passwordConfirm"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className="font-inter font-medium text-sm text-body-gray">
+                        <FormLabel className="font-medium text-[14px] text-base-secondary">
                           비밀번호 재입력
                         </FormLabel>
                         <FormControl>
@@ -166,7 +250,7 @@ export default function RegisterPage() {
                             {...field}
                             type="password"
                             placeholder="••••••••"
-                            className="font-inter text-sm text-title-gray w-full px-4 p-2 h-10"
+                            className="text-[14px] text-base-primary placeholder:text-base-secondary w-full px-4 p-2 h-10"
                           />
                         </FormControl>
                         <FormMessage />
@@ -174,16 +258,14 @@ export default function RegisterPage() {
                     )}
                   />
                   {serverError && (
-                    <p className="text-red-500 text-sm mt-2">{serverError}</p>
+                    <p className="text-error text-[14px] mt-2">{serverError}</p>
                   )}
                 </div>
               </div>
               <Button
                 type="submit"
                 disabled={isLoading}
-                className={`${
-                  isLoading ? "bg-gray-400" : "bg-blue-500"
-                } rounded-md w-full h-12 px-12 py-3 text-base font-inter font-medium mt-4`}
+                className="bg-secondary dark:bg-primary hover:bg-secondary/80 dark:hover:bg-primary/80 disabled:bg-muted rounded-md w-full h-12 px-12 py-3 text-[16px] font-medium mt-4"
               >
                 {isLoading ? (
                   <>
@@ -198,11 +280,11 @@ export default function RegisterPage() {
           </Form>
         </CardContent>
         <CardFooter className="flex-col gap-2">
-          <div className="font-inter text-title-gray text-sm">
+          <div className="text-base-secondary text-[14px]">
             이미 회원이신가요?{" "}
             <Link
-              href="/login"
-              className="hover:text-blue-500 transition-colors"
+              href="/ko/login"
+              className="hover:text-secondary dark:hover:text-primary transition-colors"
             >
               로그인
             </Link>

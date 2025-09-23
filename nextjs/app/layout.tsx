@@ -1,14 +1,20 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Inter } from "next/font/google";
-import localFont from "next/font/local";
-import { ThemeProvider } from "@/components/theme-provider";
+import { Inter, Inter_Tight } from "next/font/google";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 import { Toaster } from "sonner";
-import StagewiseDevToolbar from "@/components/StagewiseToolbar";
+import localFont from "next/font/local";
+
+// import StagewiseDevToolbar from "@/components/StagewiseToolbar";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+});
+
+const interTight = Inter_Tight({
+  subsets: ["latin"],
+  variable: "--font-inter-tight",
 });
 
 const pretendard = localFont({
@@ -62,6 +68,32 @@ const pretendard = localFont({
   variable: "--font-pretendard",
 });
 
+const nanumSquareRound = localFont({
+  src: [
+    {
+      path: "./fonts/NanumSquareRoundL.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "./fonts/NanumSquareRoundR.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/NanumSquareRoundB.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "./fonts/NanumSquareRoundEB.woff2",
+      weight: "800",
+      style: "normal",
+    },
+  ],
+  variable: "--font-nanum-square-round",
+});
+
 // TODO: 메타데이터 수정 필요
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -74,9 +106,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${pretendard.variable} ${nanumSquareRound.variable} ${inter.variable} ${interTight.variable} antialiased`}
+    >
       <head />
-      <body className={`${pretendard.variable} ${inter.variable} antialiased`}>
+      <body>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -86,7 +122,7 @@ export default function RootLayout({
           {children}
           <Toaster />
         </ThemeProvider>
-        <StagewiseDevToolbar />
+        {/* <StagewiseDevToolbar /> */}
       </body>
     </html>
   );

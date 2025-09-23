@@ -1,6 +1,6 @@
 import React from "react";
 import EditForm from "@/components/(KOR)/(admin-dashboard)/EditForm";
-import { readBlogById } from "@/lib/actions/(admin-dashboard)/blog";
+import { readBlogById } from "@/app/ko/admin-dashboard/_actions/blog";
 
 export default async function page({
   params,

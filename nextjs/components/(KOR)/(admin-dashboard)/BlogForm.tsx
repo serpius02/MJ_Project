@@ -22,8 +22,8 @@ import MarkdownPreview from "@/components/(KOR)/(admin-dashboard)/markdown/Markd
 import {
   BlogFormSchema,
   BlogFormSchemaType,
-} from "@/lib/schemas/(admin-dashboard)/blogpost";
-import { BlogDetail } from "@/lib/types";
+} from "@/app/ko/admin-dashboard/_schemas/blogpost";
+import { BlogDetail } from "@/types";
 
 // 이 함수를 정의할 때 먼저 생각할 것이 어떤 props를 넣어야 할 것인가?
 // 여기서는 사용자가 입력한 데이터를 건내주는 것이고, 그 데이터를 건내주기 위한 방법으로 빈 함수를 정의
@@ -70,7 +70,7 @@ export default function BlogForm({
             <span
               role="button"
               tabIndex={0}
-              className="flex items-center gap-1 border p-2 rounded-md hover:ring-2 transition-all font-inter text-sm text-title-primary group"
+              className="flex items-center gap-1 border p-2 rounded-md hover:bg-muted transition-all text-[14px] text-base-primary group"
               onClick={() => setIsPreview(!isPreview)}
             >
               {isPreview ? (
@@ -91,12 +91,13 @@ export default function BlogForm({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <div className="flex items-center gap-1 border p-2 rounded-md font-inter text-sm group">
+                    <div className="flex items-center gap-1 border p-2 rounded-md text-[14px] group">
                       <Trophy className="w-4 h-4 transition-transform duration-200 group-hover:scale-110" />
                       <span>프리미엄</span>
                       <Switch
                         checked={field.value}
                         onCheckedChange={field.onChange}
+                        className="data-[state=checked]:bg-secondary dark:data-[state=checked]:bg-primary"
                       />
                     </div>
                   </FormControl>
@@ -109,12 +110,13 @@ export default function BlogForm({
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <div className="flex items-center gap-1 border p-2 rounded-md font-inter text-sm group">
+                    <div className="flex items-center gap-1 border p-2 rounded-md text-[14px] group">
                       <RocketIcon className="w-4 h-4 transition-transform duration-200 group-hover:scale-110" />
                       <span>게시하기</span>
                       <Switch
                         checked={field.value}
                         onCheckedChange={field.onChange}
+                        className="data-[state=checked]:bg-secondary dark:data-[state=checked]:bg-primary"
                       />
                     </div>
                   </FormControl>
@@ -124,7 +126,7 @@ export default function BlogForm({
           </div>
           <Button
             type="submit"
-            className="group flex items-center gap-1 font-inter text-sm"
+            className="group flex items-center gap-1 text-[14px] bg-secondary dark:bg-primary hover:bg-secondary/80 dark:hover:bg-primary/80 text-white"
             disabled={!form.formState.isValid}
           >
             {isPending ? (
@@ -149,7 +151,7 @@ export default function BlogForm({
               <FormControl>
                 <div
                   className={cn(
-                    "flex p-2 px-5 w-full font-inter break-words",
+                    "flex p-2 px-5 w-full break-words",
                     isPreview ? "divide-x-0" : "divide-x"
                   )}
                 >
@@ -164,7 +166,7 @@ export default function BlogForm({
                       placeholder="제목을 입력해주세요."
                       {...field}
                       className={cn(
-                        "border-none text-lg text-body-primary font-medium leading-relaxed w-full",
+                        "border-none text-[18px] text-base-primary placeholder:text-base-secondary font-medium leading-relaxed w-full",
                         isPreview ? "p-0" : ""
                       )}
                     />
@@ -177,7 +179,7 @@ export default function BlogForm({
                         : "w-1/2 lg:block hidden"
                     )}
                   >
-                    <h1 className="text-sm text-body-gray font-medium">
+                    <h1 className="text-[14px] text-base-secondary font-medium">
                       {form.getValues().title}
                     </h1>
                   </div>
@@ -185,7 +187,7 @@ export default function BlogForm({
               </FormControl>
               {form.getFieldState("title").invalid &&
                 form.getValues().title && (
-                  <div className="p-2">
+                  <div className="px-9">
                     <FormMessage />
                   </div>
                 )}
@@ -201,7 +203,7 @@ export default function BlogForm({
               <FormControl>
                 <div
                   className={cn(
-                    "flex p-2 px-5 w-full font-inter break-words",
+                    "flex p-2 px-5 w-full break-words",
                     isPreview ? "divide-x-0" : "divide-x"
                   )}
                 >
@@ -216,7 +218,7 @@ export default function BlogForm({
                       placeholder="이미지 주소를 입력해주세요."
                       {...field}
                       className={cn(
-                        "border-none text-lg text-body-primary font-medium leading-relaxed w-full",
+                        "border-none text-[18px] text-base-primary placeholder:text-base-secondary font-medium leading-relaxed w-full",
                         isPreview ? "p-0" : ""
                       )}
                     />
@@ -231,7 +233,7 @@ export default function BlogForm({
                   >
                     {!isPreview ? (
                       <>
-                        <p className="text-sm text-body-gray font-medium">
+                        <p className="text-[14px] text-base-secondary font-medium">
                           미리보기를 눌러 이미지를 확인해주세요.
                         </p>
                       </>
@@ -252,7 +254,7 @@ export default function BlogForm({
               </FormControl>
               {form.getFieldState("image_url").invalid &&
                 form.getValues().image_url && (
-                  <div className="p-2">
+                  <div className="px-9">
                     <FormMessage />
                   </div>
                 )}
@@ -268,7 +270,7 @@ export default function BlogForm({
               <FormControl className="h-full">
                 <div
                   className={cn(
-                    "flex p-2 px-5 w-full h-[calc(100%-2rem)] font-inter break-words overflow-hidden",
+                    "flex p-2 px-5 w-full h-[calc(100%-2rem)] break-words overflow-hidden",
                     isPreview ? "divide-x-0" : "divide-x"
                   )}
                 >
@@ -283,7 +285,7 @@ export default function BlogForm({
                       placeholder="내용을 입력해주세요."
                       {...field}
                       className={cn(
-                        "border-none text-lg text-body-primary font-medium leading-relaxed w-full resize-none h-full overflow-y-auto overflow-x-auto",
+                        "border-none text-[18px] text-base-primary placeholder:text-base-secondary font-medium leading-relaxed w-full resize-none h-full overflow-y-auto overflow-x-auto",
                         isPreview ? "p-0" : ""
                       )}
                       style={{
@@ -310,7 +312,7 @@ export default function BlogForm({
               </FormControl>
               {form.getFieldState("content").invalid &&
                 form.getValues().content && (
-                  <div className="p-2">
+                  <div className="px-9">
                     <FormMessage />
                   </div>
                 )}

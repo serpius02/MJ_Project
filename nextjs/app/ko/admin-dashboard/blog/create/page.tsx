@@ -1,8 +1,8 @@
 "use client";
 
 import BlogForm from "@/components/(KOR)/(admin-dashboard)/BlogForm";
-import { BlogFormSchemaType } from "@/lib/schemas/(admin-dashboard)/blogpost";
-import { createBlog } from "@/lib/actions/(admin-dashboard)/blog";
+import { BlogFormSchemaType } from "@/app/ko/admin-dashboard/_schemas/blogpost";
+import { createBlog } from "@/app/ko/admin-dashboard/_actions/blog";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 
@@ -19,14 +19,12 @@ export default function BlogCreatePage() {
 
     if (error) {
       toast.error(
-        <span className="font-inter text-sm">
-          블로그 게시글 생성에 실패했습니다.
-        </span>,
+        <span className="text-[14px]">블로그 게시글 생성에 실패했습니다.</span>,
         {
           description: (
-            <pre className="mt-2 w-full rounded-md bg-slate-950 p-4">
+            <pre className="mt-2 w-full rounded-md bg-card p-4 border">
               <code
-                className="text-white"
+                className="text-foreground text-[12px]"
                 style={{
                   whiteSpace: "pre-wrap",
                   wordBreak: "break-all",
@@ -42,20 +40,18 @@ export default function BlogCreatePage() {
     }
 
     toast.success(
-      <span className="font-inter text-sm">
-        블로그 게시글이 생성되었습니다.
-      </span>,
+      <span className="text-[14px]">블로그 게시글이 생성되었습니다.</span>,
       {
         description: (
-          <pre className="mt-2 w-full rounded-md bg-slate-950 p-4">
+          <pre className="mt-2 w-full rounded-md bg-card p-4 border">
             <code
-              className="text-white"
+              className="text-foreground text-[12px]"
               style={{
                 whiteSpace: "pre-wrap",
                 wordBreak: "break-all",
               }}
             >
-              <span className="font-inter text-sm">
+              <span className="text-[12px]">
                 {data.title}을 생성했습니다. 대쉬보드로 이동합니다.
               </span>
             </code>

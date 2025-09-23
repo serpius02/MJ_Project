@@ -1,6 +1,6 @@
 "use client";
 
-import useUser from "@/lib/store/user";
+import useUser from "@/lib/shared/store/user";
 import { createClient } from "@/utils/supabase/client";
 import { useEffect, useCallback } from "react";
 
@@ -21,7 +21,24 @@ export default function SessionProvider() {
 
   useEffect(() => {
     readUserSession();
-  }, [readUserSession]);
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(async (event, session) => {
+      console.log("Auth state changed:", event, session?.user);
+
+      if (event === "SIGNED_IN") {
+        // 로그인 시 약간의 지연 후 상태 업데이트
+        setTimeout(() => {
+          setUser(session?.user ?? null);
+        }, 100);
+      } else {
+        setUser(session?.user ?? null);
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, [readUserSession, supabase.auth, setUser]);
 
   return <></>;
 }

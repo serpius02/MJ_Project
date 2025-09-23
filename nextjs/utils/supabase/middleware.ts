@@ -43,7 +43,8 @@ export async function updateSession(request: NextRequest) {
     !request.nextUrl.pathname.startsWith("/ko/login") &&
     !request.nextUrl.pathname.startsWith("/auth") &&
     !request.nextUrl.pathname.startsWith("/ko/register") && // Add this line
-    !request.nextUrl.pathname.startsWith("/ko/forgot-password")
+    !request.nextUrl.pathname.startsWith("/ko/forgot-password") &&
+    request.nextUrl.pathname !== "/ko"
   ) {
     // no user, potentially respond by redirecting the user to the login page
     const url = request.nextUrl.clone();

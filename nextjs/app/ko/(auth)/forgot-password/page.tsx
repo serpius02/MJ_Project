@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import { SkeletonCard } from "@/components/(KOR)/(login)/SkeletonCard";
-import ForgotPasswordContent from "@/components/(KOR)/(login)/ForgotPasswordContent";
+import { SkeletonCard } from "@/app/ko/(auth)/_components/SkeletonCard";
+import ForgotPasswordContent from "@/app/ko/(auth)/_components/ForgotPasswordContent";
 
 export default function ForgotPasswordPage() {
   return (

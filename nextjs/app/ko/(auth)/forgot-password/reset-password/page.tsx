@@ -21,10 +21,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { resetPassword } from "@/actions/auth";
+import { resetPassword } from "@/app/ko/(auth)/_actions/auth";
 import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
-import { resetPasswordSchema } from "@/lib/schemas/auth";
+import { resetPasswordSchema } from "@/app/ko/(auth)/_schemas/auth";
 
 export default function ResetPasswordPage() {
   const [serverError, setServerError] = useState<string | null>(null);
@@ -70,10 +70,10 @@ export default function ResetPasswordPage() {
     <main className="w-full min-h-screen flex justify-center items-center">
       <Card className="flex flex-col w-[400px]">
         <CardHeader>
-          <CardTitle className="text-3xl w-full text-center font-inter font-bold mb-6">
+          <CardTitle className="text-[24px] w-full text-center font-medium mb-6 text-base-primary">
             비밀번호 변경
           </CardTitle>
-          <CardDescription className="font-inter text-sm text-title-gray">
+          <CardDescription className="text-[14px] text-base-secondary">
             새로운 비밀번호를 입력하여 비밀번호를 변경합니다.
           </CardDescription>
         </CardHeader>
@@ -88,7 +88,7 @@ export default function ResetPasswordPage() {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="font-inter font-medium text-sm text-body-gray">
+                    <FormLabel className="font-medium text-[14px] text-base-secondary">
                       새로운 비밀번호
                     </FormLabel>
                     <FormControl>
@@ -96,7 +96,7 @@ export default function ResetPasswordPage() {
                         {...field}
                         type="password"
                         placeholder="••••••••"
-                        className="font-inter text-sm text-title-gray mt-1 w-full px-4 p-2 h-10"
+                        className="text-[14px] text-base-primary mt-1 w-full px-4 p-2 h-10"
                       />
                     </FormControl>
                     <FormMessage />
@@ -108,7 +108,7 @@ export default function ResetPasswordPage() {
                 name="passwordConfirm"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="font-inter font-medium text-sm text-body-gray">
+                    <FormLabel className="font-medium text-[14px] text-base-secondary">
                       비밀번호 확인
                     </FormLabel>
                     <FormControl>
@@ -116,7 +116,7 @@ export default function ResetPasswordPage() {
                         {...field}
                         type="password"
                         placeholder="••••••••"
-                        className="font-inter text-sm text-title-gray mt-1 w-full px-4 p-2 h-10"
+                        className="text-[14px] text-base-primary mt-1 w-full px-4 p-2 h-10"
                       />
                     </FormControl>
                     <FormMessage />
@@ -124,14 +124,14 @@ export default function ResetPasswordPage() {
                 )}
               />
               {serverError && (
-                <p className="text-red-500 text-sm mt-2">{serverError}</p>
+                <p className="text-error text-[14px] mt-2">{serverError}</p>
               )}
               <Button
                 type="submit"
                 disabled={isLoading}
                 className={`${
-                  isLoading ? "bg-gray-400" : "bg-blue-500"
-                } rounded-md w-full h-12 px-12 py-3 text-base font-inter font-medium mt-4`}
+                  isLoading ? "bg-muted" : "bg-secondary dark:bg-primary"
+                } rounded-md w-full h-12 px-12 py-3 text-[14px] font-medium mt-4`}
               >
                 {isLoading ? (
                   <>

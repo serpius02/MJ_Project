@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import { SkeletonCard } from "@/components/(KOR)/(login)/SkeletonCard";
-import RegisterConfirmationContent from "@/components/(KOR)/(login)/RegisterConfirmationContent";
+import { SkeletonCard } from "@/app/ko/(auth)/_components/SkeletonCard";
+import RegisterConfirmationContent from "@/app/ko/(auth)/_components/RegisterConfirmationContent";
 
 export default function RegisterConfirmationPage() {
   return (

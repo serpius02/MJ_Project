@@ -17,12 +17,12 @@ export default function CopyButton({ id }: { id: string }) {
   };
   return (
     <div
-      className="flex font-inter text-sm items-center gap-2 p-2 group relative cursor-pointer"
+      className="flex text-[14px] items-center gap-2 p-2 group relative cursor-pointer"
       onClick={handleCopy}
     >
       <Check
         className={cn(
-          "transition-all w-5 h-5 text-green-500",
+          "transition-all w-5 h-5 text-success",
           onDone ? "scale-100" : "scale-0"
         )}
         onTransitionEnd={() => {

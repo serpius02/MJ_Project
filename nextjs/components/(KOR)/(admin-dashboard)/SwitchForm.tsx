@@ -21,14 +21,12 @@ export default function SwitchForm({
 
     if (error) {
       toast.error(
-        <span className="font-inter text-sm">
-          {name} 상태 변경에 실패했습니다.
-        </span>,
+        <span className="text-[14px]">{name} 상태 변경에 실패했습니다.</span>,
         {
           description: (
-            <pre className="mt-2 w-full rounded-md bg-slate-950 p-4">
+            <pre className="mt-2 w-full rounded-md bg-card p-4 border">
               <code
-                className="text-white"
+                className="text-foreground text-[12px]"
                 style={{
                   whiteSpace: "pre-wrap",
                   wordBreak: "break-all",
@@ -42,20 +40,18 @@ export default function SwitchForm({
       );
     } else {
       toast.success(
-        <span className="font-inter text-sm">
-          {name} 상태가 변경되었습니다.
-        </span>,
+        <span className="text-[14px]">{name} 상태가 변경되었습니다.</span>,
         {
           description: (
-            <pre className="mt-2 w-full rounded-md bg-slate-950 p-4">
+            <pre className="mt-2 w-full rounded-md bg-card p-4 border">
               <code
-                className="text-white"
+                className="text-foreground text-[12px]"
                 style={{
                   whiteSpace: "pre-wrap",
                   wordBreak: "break-all",
                 }}
               >
-                <span className="font-inter text-sm">
+                <span className="text-[12px]">
                   {name} 상태가 성공적으로 변경되었습니다.
                 </span>
               </code>
@@ -67,7 +63,11 @@ export default function SwitchForm({
   };
   return (
     <form onSubmit={onSubmit}>
-      <Switch checked={checked} type="submit" />
+      <Switch
+        checked={checked}
+        type="submit"
+        className="data-[state=checked]:bg-secondary dark:data-[state=checked]:bg-primary"
+      />
     </form>
   );
 }

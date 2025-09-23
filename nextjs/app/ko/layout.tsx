@@ -1,24 +1,22 @@
-"use client";
-
-import NavBar from "@/components/(KOR)/NavBar";
+import { ConditionalNavBar } from "@/app/ko/_components/ConditionalNavBar";
 import React from "react";
-import { usePathname } from "next/navigation";
 import SessionProvider from "@/components/ui/session-provider";
+import AIAssistantButton from "@/components/(KOR)/AssistantButton";
 
-// 로그인 페이지에서는 레이아웃에 네비바를 숨김 (혹은 나중에 네비바를 놔둘 건지도 생각해 볼 것!)
 const KoLayout = ({ children }: { children: React.ReactNode }) => {
-  const pathname = usePathname();
-  const hideNav =
-    pathname.startsWith("/ko/login") ||
-    pathname.startsWith("/ko/register") ||
-    pathname.startsWith("/ko/error") ||
-    pathname.startsWith("/ko/forgot-password");
-
   return (
-    <div>
-      {!hideNav && <NavBar />}
-      {children}
-      <SessionProvider />
+    <div className="min-h-screen flex flex-col max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
+      <header>
+        {/* 조건부 네비바 - 클라이언트 컴포넌트에서 pathname 처리 */}
+        <ConditionalNavBar />
+
+        {/* children이 남은 모든 공간을 차지하도록 합니다. */}
+        <div className="flex-1">{children}</div>
+
+        <SessionProvider />
+        {/* TODO: AI 도우미 버튼 기능 추가 - 모든 한국어 페이지에서 표시 */}
+        <AIAssistantButton />
+      </header>
     </div>
   );
 };

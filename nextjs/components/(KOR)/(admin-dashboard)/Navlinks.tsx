@@ -6,6 +6,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { usePathname } from "next/navigation";
 import { Separator } from "@/components/ui/separator";
+
 export default function Navlinks() {
   const pathname = usePathname();
   const links = [
@@ -29,8 +30,11 @@ export default function Navlinks() {
             href={href}
             key={index}
             className={cn(
-              "text-title-primary font-inter text-sm flex items-center gap-1 hover:underline transition-all",
-              { "text-blue-500 font-bold underline": pathname === href }
+              "text-base-primary text-[14px] flex items-center gap-1 hover:underline transition-all",
+              {
+                "text-secondary dark:text-primary font-medium underline":
+                  pathname === href,
+              }
             )}
           >
             {icon}
@@ -38,7 +42,7 @@ export default function Navlinks() {
           </Link>
         ))}
       </div>
-      <Separator className="w-full h-px bg-gray-200" />
+      <Separator />
     </div>
   );
 }

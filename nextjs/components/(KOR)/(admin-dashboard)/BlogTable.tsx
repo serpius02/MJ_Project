@@ -5,9 +5,9 @@ import SwitchForm from "@/components/(KOR)/(admin-dashboard)/SwitchForm";
 import {
   readBlogs,
   updateBlogById,
-} from "@/lib/actions/(admin-dashboard)/blog";
+} from "@/app/ko/admin-dashboard/_actions/blog";
 import DeleteAlert from "@/components/(KOR)/(admin-dashboard)/DeleteAlert";
-import { BlogFormSchemaType } from "@/lib/schemas/(admin-dashboard)/blogpost";
+import { BlogFormSchemaType } from "@/app/ko/admin-dashboard/_schemas/blogpost";
 import Link from "next/link";
 
 interface Blog {
@@ -27,10 +27,10 @@ export default async function BlogTable() {
   return (
     <div className="overflow-x-auto">
       <div className="border rounded-md w-[800px] md:w-full">
-        <div className="grid grid-cols-5 p-5 font-inter text-title-primary border-b">
-          <h1 className="col-span-2">블로그 제목</h1>
-          <h1>프리미엄</h1>
-          <h1>게시하기</h1>
+        <div className="grid grid-cols-5 p-5 text-base-primary border-b">
+          <h1 className="col-span-2 text-[16px] font-medium">블로그 제목</h1>
+          <h1 className="text-[16px] font-medium">프리미엄</h1>
+          <h1 className="text-[16px] font-medium">게시하기</h1>
         </div>
         {blogs.map((blog: Blog) => {
           const updatePremium = updateBlogById.bind(null, blog.id, {
@@ -42,10 +42,10 @@ export default async function BlogTable() {
 
           return (
             <div
-              className="grid grid-cols-5 p-5 font-inter text-body-gray border-b"
+              className="grid grid-cols-5 p-5 text-base-secondary border-b"
               key={blog.id}
             >
-              <h1 className="col-span-2">{blog.title}</h1>
+              <h1 className="col-span-2 text-[14px]">{blog.title}</h1>
               <SwitchForm
                 checked={blog.is_premium}
                 onToggle={updatePremium}
@@ -67,13 +67,16 @@ export default async function BlogTable() {
 
 const Actions = ({ id }: { id: string }) => {
   return (
-    <div className="flex items-center gap-5 flex-wrap font-inter text-title-primary">
-      <Button variant="outline" className="flex items-center gap-2">
+    <div className="flex items-center gap-5 flex-wrap text-base-primary">
+      <Button variant="outline" className="flex items-center gap-2 text-[14px]">
         <Eye className="w-4 h-4" />
         미리보기
       </Button>
       <Link href={`/ko/admin-dashboard/blog/edit/${id}`}>
-        <Button variant="outline" className="flex items-center gap-2">
+        <Button
+          variant="outline"
+          className="flex items-center gap-2 text-[14px]"
+        >
           <Pencil className="w-4 h-4" />
           수정하기
         </Button>

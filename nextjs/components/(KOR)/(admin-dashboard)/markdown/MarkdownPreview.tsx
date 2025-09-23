@@ -20,12 +20,23 @@ export default function MarkdownPreview({
         rehypePlugins={[rehypeHighlight]}
         components={{
           h1: ({ ...props }) => (
-            <h1 {...props} className="text-3xl font-bold" />
+            <h1
+              {...props}
+              className="text-[24px] font-medium text-base-primary"
+            />
           ),
           h2: ({ ...props }) => (
-            <h2 {...props} className="text-2xl font-bold" />
+            <h2
+              {...props}
+              className="text-[21px] font-medium text-base-primary"
+            />
           ),
-          h3: ({ ...props }) => <h3 {...props} className="text-xl font-bold" />,
+          h3: ({ ...props }) => (
+            <h3
+              {...props}
+              className="text-[18px] font-medium text-base-primary"
+            />
+          ),
           code: ({ className, children, ...props }) => {
             const match = /language-(\w+)/.exec(className || "");
             if (match?.length) {
@@ -36,11 +47,13 @@ export default function MarkdownPreview({
                 const id = (Math.floor(Math.random() * 100) + 1).toString();
 
                 return (
-                  <div className="text-gray-300 border rounded-md">
-                    <div className="px-5 py-2 border-b flex items-center justify-between">
+                  <div className="text-base-secondary border border-border rounded-md bg-card">
+                    <div className="px-5 py-2 border-b border-border flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <Icon className="w-4 h-4" />
-                        <span>{props.node?.data?.meta}</span>
+                        <span className="text-[14px]">
+                          {props.node?.data?.meta}
+                        </span>
                       </div>
                       <CopyButton id={id} />
                     </div>
@@ -53,7 +66,7 @@ export default function MarkdownPreview({
                 );
               } else {
                 return (
-                  <code className="bg-zinc-700 rounded-md px-2">
+                  <code className="bg-muted rounded-md px-2 py-1 text-[12px] text-base-primary">
                     {children}
                   </code>
                 );
