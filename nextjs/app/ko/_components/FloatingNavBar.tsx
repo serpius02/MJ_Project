@@ -166,7 +166,7 @@ export default function FloatingNavBar() {
               );
             })}
           </div>
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-3">
             {/* TODO: 구독 버튼 기능 추가 */}
             <ModeToggle />
             {isLoggedIn ? (

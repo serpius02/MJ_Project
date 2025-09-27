@@ -5,7 +5,8 @@ import AIAssistantButton from "@/components/(KOR)/AssistantButton";
 
 const KoLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="min-h-screen flex flex-col max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
+    // 여기서 max-w-6xl 를 설정하지 않고, 개별 페이지에서 조절하는 방식으로 변경!
+    <div className="min-h-screen flex flex-col mx-auto px-4 md:px-6 lg:px-8">
       <header>
         {/* 조건부 네비바 - 클라이언트 컴포넌트에서 pathname 처리 */}
         <ConditionalNavBar />

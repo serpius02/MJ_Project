@@ -1,0 +1,7 @@
+[
+  {
+    "index": 278,
+    "error": "Both structured output format and JSON mode failed. Please choose a model that supports `response_format` argument. Original error: 1 validation error for StudentProfile\ndecisions.acceptances.22.decision_plan\n  Input should be 'EA', 'ED', 'RD', 'RA' or 'N/A' [type=literal_error, input_value='REA', input_type=str]\n    For further information visit https://errors.pydantic.dev/2.11/v/literal_error",
+    "post_preview": "Engineering Major 🎓\\n\\nDemographics\\n\\nAsian\\nMale\\n100k-200k\\nPublic School\\nAcademics\\n\\n35 ACT\\n1..."
+  }
+]

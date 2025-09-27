@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Inter, Inter_Tight } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/theme-provider";
-import { Toaster } from "sonner";
+import { Toast } from "@/components/toast";
 import localFont from "next/font/local";
 
 // import StagewiseDevToolbar from "@/components/StagewiseToolbar";
@@ -120,7 +120,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
-          <Toaster />
+          <Toast />
         </ThemeProvider>
         {/* <StagewiseDevToolbar /> */}
       </body>

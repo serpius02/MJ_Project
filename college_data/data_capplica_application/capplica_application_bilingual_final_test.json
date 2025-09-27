@@ -1,0 +1,729 @@
+[
+  {
+    "post_text": "Political Science Major 🎓\\n\\nDemographics\\n\\nWhite\\nMale\\n0-50k\\nPrivate School\\nAcademics\\n\\n1590 SAT\\n8 AP's\\n3.87 UW\\n4.2 W\\nExtracurriculars\\n\\n1. Student Body President\\n\\n2. Varsity Rower\\n\\n3. Intern at Congresswomen's Office\\n\\n4. Researcher and Presenter\\n\\n5. Peer Tutor/English Tutor/Worker\\n\\n6. Yale Young Global Scholars\\n\\n7. Intern at PwC Sydney Office\\n\\n8. Camp Counselor at Native American school\\n\\n9. Pre-college programs\\n\\n10. Co-founder of a digital magazine\\n\\nAwards\\n\\n1. N/A\\n\\nAcceptances\\n\\n1. Georgetown\\n\\n2. Notre Dame\\n\\n3. Villanova University\\n\\n4. UNC\\n\\n5. UVA\\n\\n6. Umich\\n\\n7. UPenn\\n\\n8. Rice University\\n\\n9. WashU\\n\\n10. Yale\\n\\n11. Princeton\\n\\n12. Williams\\n\\n13. Amherst\\n\\n14. Middlebury\\n\\n15. NYU Stern\\n\\n16. Dartmouth\\n\\n17. College of the Holy Cross\\n\\n18. Boston College\\n\\n19. Northeastern\\n\\n20. Emory",
+    "structured_profile": {
+      "demographics": {
+        "gender": "Male",
+        "race_ethnicity": {
+          "english": "White",
+          "korean": null
+        },
+        "residence": null,
+        "income_bracket": "0-50k",
+        "type_of_school": {
+          "english": "Private School",
+          "korean": null
+        },
+        "hooks": null,
+        "intended_majors": {
+          "english": "Political Science",
+          "korean": "정치학"
+        }
+      },
+      "academics": {
+        "gpa": {
+          "unweighted": 3.87,
+          "weighted": 4.2
+        },
+        "course_count": {
+          "honors": null,
+          "ap": 8,
+          "ib": null,
+          "dual_enrollment": null
+        },
+        "senior_year_course_load": null
+      },
+      "standardized_testing": {
+        "sat_i": {
+          "total": 1590,
+          "reading_writing": null,
+          "math": null
+        },
+        "act": null
+      },
+      "extracurriculars": [
+        {
+          "english": "Student Body President",
+          "korean": "학생회장"
+        },
+        {
+          "english": "Varsity Rower",
+          "korean": "조정부 대표 선수"
+        },
+        {
+          "english": "Intern at Congresswomen's Office",
+          "korean": "여성 국회의원 사무실 인턴"
+        },
+        {
+          "english": "Researcher and Presenter",
+          "korean": "연구원 및 발표자"
+        },
+        {
+          "english": "Peer Tutor/English Tutor/Worker",
+          "korean": "또래 튜터/영어 튜터/근로자"
+        },
+        {
+          "english": "Yale Young Global Scholars",
+          "korean": "예일 영 글로벌 스칼라"
+        },
+        {
+          "english": "Intern at PwC Sydney Office",
+          "korean": "PwC 시드니 지사 인턴"
+        },
+        {
+          "english": "Camp Counselor at Native American school",
+          "korean": "아메리카 원주민 학교 캠프 상담사"
+        },
+        {
+          "english": "Pre-college programs",
+          "korean": "대학 예비 프로그램"
+        },
+        {
+          "english": "Co-founder of a digital magazine",
+          "korean": "디지털 매거진 공동 창립자"
+        }
+      ],
+      "awards_honors": [],
+      "letters_of_recommendation": null,
+      "essays": null,
+      "decisions": {
+        "acceptances": [
+          {
+            "university": {
+              "english": "Georgetown",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "Notre Dame",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "Villanova University",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "UNC",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "UVA",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "Umich",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "UPenn",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "Rice University",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "WashU",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "Yale",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "Princeton",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "Williams",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "Amherst",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "Middlebury",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "NYU Stern",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "Dartmouth",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "College of the Holy Cross",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "Boston College",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "Northeastern",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "Emory",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          }
+        ],
+        "waitlists": null,
+        "rejections": null
+      },
+      "additional_information": null
+    }
+  },
+  {
+    "post_text": "Political Science Major 🎓\\n\\nDemographics\\n\\nAsian\\nNon-Binary\\n50k-100k\\nPublic School\\nAcademics\\n\\n1540 SAT\\n3.76 UW\\nExtracurriculars\\n\\n1. Taking care of family members\\n\\n2. Model UN President\\n\\n3. Campaign Intern for 6 election campaigns\\n\\n4. Director at a long-standing political nonprofit\\n\\n5. Student council president\\n\\n6. Summer Program attendee\\n\\n7. Youth Advisory Chair at large labour education nonprofit\\n\\n8. Orchestra player at city youth orchestra & street busker\\n\\n9. Captain for Relay for Life\\n\\n10. Volunteer Coach & Public Outreach/Marketing director at a figure skating non-profit\\n\\nAwards\\n\\n1. Scholastic Art & Writing Gold Key\\n\\n2. City-wide creative writing contest winner\\n\\n3. MUN awards\\n\\n4. Best dressed\\n\\n5. Canadian scholarship semi-finalist\\n\\nAcceptances\\n\\n1. UChicago",
+    "structured_profile": {
+      "demographics": {
+        "gender": "Non-Binary",
+        "race_ethnicity": {
+          "english": "Asian",
+          "korean": null
+        },
+        "residence": null,
+        "income_bracket": "50k-100k",
+        "type_of_school": {
+          "english": "Public School",
+          "korean": null
+        },
+        "hooks": null,
+        "intended_majors": {
+          "english": "Political Science Major",
+          "korean": "정치학 전공"
+        }
+      },
+      "academics": {
+        "gpa": {
+          "unweighted": 3.76,
+          "weighted": null
+        },
+        "course_count": null,
+        "senior_year_course_load": null
+      },
+      "standardized_testing": {
+        "sat_i": {
+          "total": 1540,
+          "reading_writing": null,
+          "math": null
+        },
+        "act": null
+      },
+      "extracurriculars": [
+        {
+          "english": "Taking care of family members",
+          "korean": "가족 돌보기"
+        },
+        {
+          "english": "Model UN President",
+          "korean": "모의 유엔 회장"
+        },
+        {
+          "english": "Campaign Intern for 6 election campaigns",
+          "korean": "6개 선거 캠페인 인턴"
+        },
+        {
+          "english": "Director at a long-standing political nonprofit",
+          "korean": "오랜 정치 비영리 단체 이사"
+        },
+        {
+          "english": "Student council president",
+          "korean": "학생회장"
+        },
+        {
+          "english": "Summer Program attendee",
+          "korean": "여름 프로그램 참가자"
+        },
+        {
+          "english": "Youth Advisory Chair at large labour education nonprofit",
+          "korean": "대규모 노동 교육 비영리 단체 청소년 자문 위원장"
+        },
+        {
+          "english": "Orchestra player at city youth orchestra & street busker",
+          "korean": "시립 청소년 오케스트라 단원 및 거리 공연가"
+        },
+        {
+          "english": "Captain for Relay for Life",
+          "korean": "릴레이 포 라이프 주장"
+        },
+        {
+          "english": "Volunteer Coach & Public Outreach/Marketing director at a figure skating non-profit",
+          "korean": "피겨 스케이팅 비영리 단체 자원봉사 코치 및 홍보/마케팅 이사"
+        }
+      ],
+      "awards_honors": [
+        {
+          "english": "Scholastic Art & Writing Gold Key",
+          "korean": "스콜라스틱 예술 및 문학 골드 키"
+        },
+        {
+          "english": "City-wide creative writing contest winner",
+          "korean": "시 전역 창작 글쓰기 대회 우승자"
+        },
+        {
+          "english": "MUN awards",
+          "korean": "모의 유엔 수상"
+        },
+        {
+          "english": "Best dressed",
+          "korean": "베스트 드레서"
+        },
+        {
+          "english": "Canadian scholarship semi-finalist",
+          "korean": "캐나다 장학금 준결승 진출자"
+        }
+      ],
+      "letters_of_recommendation": null,
+      "essays": null,
+      "decisions": {
+        "acceptances": [
+          {
+            "university": {
+              "english": "UChicago",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          }
+        ],
+        "waitlists": null,
+        "rejections": null
+      },
+      "additional_information": null
+    }
+  },
+  {
+    "post_text": "Bioengineering Major 🎓\\n\\nDemographics\\n\\nAsian\\nMale\\n200k+\\nPublic School\\nAcademics\\n\\n1540 SAT\\n9 AP's\\n4 UW\\n4.1268 W\\nExtracurriculars\\n\\n1. Science Olympiad: Captain\\n\\n2. Treasurer\\n\\n3. Secretary. Research Intern. Cello: school chamber\\n\\n4. regions top orchestra. Science Honors Society: President. School Newspaper: Managing Editor. Suicide Awareness Club: Treasurer. Spikeball Club: Cofounder. AAPI Cultural Heritage club: K-pop dancer. Model United Nations: delegate. Lifting.\\n\\nAwards\\n\\n1. Science Olympiad big invitational medal\\n\\n2. Science Olympiad states medal\\n\\n3. National Merit Semifinalist\\n\\nAcceptances\\n\\n1. Binghamton\\n\\n2. UPenn",
+    "structured_profile": {
+      "demographics": {
+        "gender": "Male",
+        "race_ethnicity": {
+          "english": "Asian",
+          "korean": null
+        },
+        "residence": null,
+        "income_bracket": "200k+",
+        "type_of_school": {
+          "english": "Public School",
+          "korean": null
+        },
+        "hooks": null,
+        "intended_majors": {
+          "english": "Bioengineering Major",
+          "korean": "생명공학 전공"
+        }
+      },
+      "academics": {
+        "gpa": {
+          "unweighted": 4.0,
+          "weighted": 4.1268
+        },
+        "course_count": {
+          "honors": null,
+          "ap": 9,
+          "ib": null,
+          "dual_enrollment": null
+        },
+        "senior_year_course_load": null
+      },
+      "standardized_testing": {
+        "sat_i": {
+          "total": 1540,
+          "reading_writing": null,
+          "math": null
+        },
+        "act": null
+      },
+      "extracurriculars": [
+        {
+          "english": "Science Olympiad: Captain",
+          "korean": "과학 올림피아드: 주장"
+        },
+        {
+          "english": "Treasurer",
+          "korean": "회계 담당"
+        },
+        {
+          "english": "Secretary",
+          "korean": "비서"
+        },
+        {
+          "english": "Research Intern",
+          "korean": "연구 인턴"
+        },
+        {
+          "english": "Cello: school chamber",
+          "korean": "첼로: 학교 실내악단"
+        },
+        {
+          "english": "Cello: regions top orchestra",
+          "korean": "첼로: 지역 최고 오케스트라"
+        },
+        {
+          "english": "Science Honors Society: President",
+          "korean": "과학 우등생 협회: 회장"
+        },
+        {
+          "english": "School Newspaper: Managing Editor",
+          "korean": "학교 신문: 편집장"
+        },
+        {
+          "english": "Suicide Awareness Club: Treasurer",
+          "korean": "자살 예방 클럽: 회계 담당"
+        },
+        {
+          "english": "Spikeball Club: Cofounder",
+          "korean": "스파이크볼 클럽: 공동 설립자"
+        },
+        {
+          "english": "AAPI Cultural Heritage club: K-pop dancer",
+          "korean": "아시아 태평양계 문화유산 클럽: K-pop 댄서"
+        },
+        {
+          "english": "Model United Nations: delegate",
+          "korean": "모의 유엔: 대표"
+        },
+        {
+          "english": "Lifting",
+          "korean": "역도"
+        }
+      ],
+      "awards_honors": [
+        {
+          "english": "Science Olympiad big invitational medal",
+          "korean": "과학 올림피아드 대규모 초청 대회 메달"
+        },
+        {
+          "english": "Science Olympiad states medal",
+          "korean": "과학 올림피아드 주 대회 메달"
+        },
+        {
+          "english": "National Merit Semifinalist",
+          "korean": "내셔널 메릿 준결승 진출자"
+        }
+      ],
+      "letters_of_recommendation": null,
+      "essays": null,
+      "decisions": {
+        "acceptances": [
+          {
+            "university": {
+              "english": "Binghamton",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "UPenn",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          }
+        ],
+        "waitlists": null,
+        "rejections": null
+      },
+      "additional_information": null
+    }
+  },
+  {
+    "post_text": "Molecular Biology Major 🎓\\n\\nDemographics\\n\\nAsian\\nMale\\n0-50k\\nPublic School\\nAcademics\\n\\n35 ACT\\n11 AP's\\n3.99 UW\\n4.5 W\\nExtracurriculars\\n\\n1. Research Internship at Northwestern University\\n\\n2. Founder of Biology Club\\n\\n3. Captain of Science Olympiad team\\n\\n4. Only high school volunteer at a local hospital\\n\\n5. Drummer/Leader for a Rock Band\\n\\nAwards\\n\\n1. COMAP HiMCM Meritorious\\n\\n2. Science Olympiad State 1st place in an event\\n\\n3. Science Olympiad Regional 2nd place in a different event\\n\\n4. High Honor Roll x3\\n\\n5. NHS\\n\\nAcceptances\\n\\n1. Rutgers University - Newark\\n\\n2. Pittsburgh University\\n\\n3. Duke University",
+    "structured_profile": {
+      "demographics": {
+        "gender": "Male",
+        "race_ethnicity": {
+          "english": "Asian",
+          "korean": null
+        },
+        "residence": null,
+        "income_bracket": "0-50k",
+        "type_of_school": {
+          "english": "Public School",
+          "korean": null
+        },
+        "hooks": null,
+        "intended_majors": {
+          "english": "Molecular Biology",
+          "korean": "분자 생물학"
+        }
+      },
+      "academics": {
+        "gpa": {
+          "unweighted": 3.99,
+          "weighted": 4.5
+        },
+        "course_count": {
+          "honors": null,
+          "ap": 11,
+          "ib": null,
+          "dual_enrollment": null
+        },
+        "senior_year_course_load": null
+      },
+      "standardized_testing": {
+        "sat_i": null,
+        "act": 35
+      },
+      "extracurriculars": [
+        {
+          "english": "Research Internship at Northwestern University",
+          "korean": "노스웨스턴 대학교 연구 인턴십"
+        },
+        {
+          "english": "Founder of Biology Club",
+          "korean": "생물학 동아리 창립자"
+        },
+        {
+          "english": "Captain of Science Olympiad team",
+          "korean": "과학 올림피아드 팀 주장"
+        },
+        {
+          "english": "Only high school volunteer at a local hospital",
+          "korean": "지역 병원 유일한 고등학생 자원봉사자"
+        },
+        {
+          "english": "Drummer/Leader for a Rock Band",
+          "korean": "록 밴드 드러머/리더"
+        }
+      ],
+      "awards_honors": [
+        {
+          "english": "COMAP HiMCM Meritorious",
+          "korean": "COMAP HiMCM 우수상"
+        },
+        {
+          "english": "Science Olympiad State 1st place in an event",
+          "korean": "과학 올림피아드 주 대회 한 종목 1위"
+        },
+        {
+          "english": "Science Olympiad Regional 2nd place in a different event",
+          "korean": "과학 올림피아드 지역 대회 다른 종목 2위"
+        },
+        {
+          "english": "High Honor Roll x3",
+          "korean": "우수 학생 명단 3회"
+        },
+        {
+          "english": "NHS",
+          "korean": "전미 우등생 협회 (NHS)"
+        }
+      ],
+      "letters_of_recommendation": null,
+      "essays": null,
+      "decisions": {
+        "acceptances": [
+          {
+            "university": {
+              "english": "Rutgers University - Newark",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "Pittsburgh University",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "Duke University",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          }
+        ],
+        "waitlists": null,
+        "rejections": null
+      },
+      "additional_information": null
+    }
+  },
+  {
+    "post_text": "Government Major 🎓\\n\\nDemographics\\n\\nWhite\\nMale\\n200k+\\nPublic School\\nAcademics\\n\\n35 ACT\\n13 AP's\\n3.92 W\\nExtracurriculars\\n\\n1. President Speech & Debate\\n\\n2. Debate Captain\\n\\n3. Legislative Intern\\n\\n4. Intern Local County Democratic Committee\\n\\n5. Fellow for a National advocacy organization\\n\\n6. Political social media organization\\n\\n7. Research\\n\\n8. Head of Building FTC Robotics Team 9th and 10th grade\\n\\nAwards\\n\\n1. Top 5 in state for debate event\\n\\n2. NSDA All-State\\n\\n3. State Seal Of Biliteracy - Anticipated\\n\\n4. AP Scholar With Distinction\\n\\n5. National Honor Society\\n\\n6. National Spanish Honor Society\\n\\nAcceptances\\n\\n1. Binghamton\\n\\n2. Dartmouth",
+    "structured_profile": {
+      "demographics": {
+        "gender": "Male",
+        "race_ethnicity": {
+          "english": "White",
+          "korean": null
+        },
+        "residence": null,
+        "income_bracket": "200k+",
+        "type_of_school": {
+          "english": "Public School",
+          "korean": null
+        },
+        "hooks": null,
+        "intended_majors": {
+          "english": "Government Major",
+          "korean": "정부학 전공"
+        }
+      },
+      "academics": {
+        "gpa": {
+          "unweighted": null,
+          "weighted": 3.92
+        },
+        "course_count": {
+          "honors": null,
+          "ap": 13,
+          "ib": null,
+          "dual_enrollment": null
+        },
+        "senior_year_course_load": null
+      },
+      "standardized_testing": {
+        "sat_i": null,
+        "act": 35
+      },
+      "extracurriculars": [
+        {
+          "english": "President Speech & Debate",
+          "korean": "스피치 및 토론 동아리 회장"
+        },
+        {
+          "english": "Debate Captain",
+          "korean": "토론 팀 주장"
+        },
+        {
+          "english": "Legislative Intern",
+          "korean": "입법 인턴"
+        },
+        {
+          "english": "Intern Local County Democratic Committee",
+          "korean": "지역 카운티 민주당 위원회 인턴"
+        },
+        {
+          "english": "Fellow for a National advocacy organization",
+          "korean": "국가 옹호 단체 펠로우"
+        },
+        {
+          "english": "Political social media organization",
+          "korean": "정치 소셜 미디어 단체"
+        },
+        {
+          "english": "Research",
+          "korean": "연구"
+        },
+        {
+          "english": "Head of Building FTC Robotics Team 9th and 10th grade",
+          "korean": "9학년 및 10학년 FTC 로봇 공학 팀 구축 책임자"
+        }
+      ],
+      "awards_honors": [
+        {
+          "english": "Top 5 in state for debate event",
+          "korean": "주 토론 대회 상위 5위"
+        },
+        {
+          "english": "NSDA All-State",
+          "korean": "NSDA 전 주 대표"
+        },
+        {
+          "english": "State Seal Of Biliteracy - Anticipated",
+          "korean": "주 이중 언어 능력 인증서 - 예상"
+        },
+        {
+          "english": "AP Scholar With Distinction",
+          "korean": "AP 우수 장학생"
+        },
+        {
+          "english": "National Honor Society",
+          "korean": "전미 우등생 협회"
+        },
+        {
+          "english": "National Spanish Honor Society",
+          "korean": "전미 스페인어 우등생 협회"
+        }
+      ],
+      "letters_of_recommendation": null,
+      "essays": null,
+      "decisions": {
+        "acceptances": [
+          {
+            "university": {
+              "english": "Binghamton",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          },
+          {
+            "university": {
+              "english": "Dartmouth",
+              "korean": null
+            },
+            "decision_plan": "N/A"
+          }
+        ],
+        "waitlists": null,
+        "rejections": null
+      },
+      "additional_information": null
+    }
+  }
+]

@@ -15,20 +15,21 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import { User } from "@supabase/supabase-js";
-import { signOut } from "@/app/ko/(auth)/_actions/auth";
-import { toast } from "sonner";
+import { signOutAction } from "@/app/ko/(auth)/_actions/auth-actions";
 import { useRouter } from "next/navigation";
 import Icon from "@/components/Icon";
 import Link from "next/link";
 import useUser from "@/lib/shared/store/user";
+import { useToast } from "@/hooks/useToast";
 
-// TODO: 나중에 유저가 직접 설정한 이미지 추가할 수 있도록?
+// TODO: 나중에 유저가 직접 설정한 이미지 추가할 수 있도록
 const ProfileButton = ({ user }: { user: User | null }) => {
   const router = useRouter();
   const setUser = useUser((state) => state.setUser);
 
   const [loading, setLoading] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const { addToast } = useToast();
 
   const avatarSvg =
     user?.user_metadata.avatar_url ||
@@ -40,16 +41,22 @@ const ProfileButton = ({ user }: { user: User | null }) => {
     setLoading(true);
 
     try {
-      const result = await signOut();
+      const result = await signOutAction();
       if (result.success) {
         setUser(null); // Zustand 상태 즉시 업데이트
-        toast.success("안전하게 로그아웃되었습니다!");
+        addToast({ message: "안전하게 로그아웃되었습니다!", type: "success" });
         router.push("/ko/");
       } else {
-        toast.error(result.message || "로그아웃 중에 오류가 발생했습니다.");
+        addToast({
+          message: result.message || "로그아웃 중에 오류가 발생했습니다.",
+          type: "error",
+        });
       }
     } catch {
-      toast.error("예상치 못한 오류가 발생했습니다.");
+      addToast({
+        message: "예상치 못한 오류가 발생했습니다.",
+        type: "error",
+      });
     } finally {
       setLoading(false);
     }

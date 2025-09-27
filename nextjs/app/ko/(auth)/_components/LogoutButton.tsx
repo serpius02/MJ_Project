@@ -2,9 +2,9 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
+import Icon from "@/components/Icon";
 import { User } from "@supabase/supabase-js";
-import { signOut } from "@/app/ko/(auth)/_actions/auth";
+import { signOutAction } from "@/app/ko/(auth)/_actions/auth-actions";
 
 const LogoutButton = ({ user }: { user: User | null }) => {
   const [loading, setLoading] = useState(false);
@@ -13,7 +13,7 @@ const LogoutButton = ({ user }: { user: User | null }) => {
     setLoading(true);
 
     try {
-      await signOut();
+      await signOutAction();
     } catch (error) {
       console.error("로그아웃 중에 오류가 발생했습니다:", error);
       setLoading(false);
@@ -37,7 +37,11 @@ const LogoutButton = ({ user }: { user: User | null }) => {
       onClick={handleLogout}
       disabled={loading}
     >
-      {loading ? <Loader2 className="w-4 h-4 animate-spin" /> : "로그아웃"}
+      {loading ? (
+        <Icon name="loader" className="w-4 h-4 animate-spin" />
+      ) : (
+        "로그아웃"
+      )}
     </Button>
   );
 };

@@ -1,0 +1,20 @@
+[
+  {
+    "university": "Creighton University",
+    "url": "https://www.collegevine.com/schools/creighton-university/essay-prompts",
+    "error": "Failed to extract prompts",
+    "source": "CollegeVineEssays"
+  },
+  {
+    "university": "Marquette University",
+    "url": "https://www.collegevine.com/schools/marquette-university/essay-prompts",
+    "error": "Failed to extract prompts",
+    "source": "CollegeVineEssays"
+  },
+  {
+    "university": "University of California-Berkeley",
+    "url": "https://www.collegevine.com/schools/university-of-california-berkeley-uc-berkeley/essay-prompts",
+    "error": "Failed to extract prompts",
+    "source": "CollegeVineEssays"
+  }
+]

@@ -1,23 +1,26 @@
 "use client";
 
 import * as React from "react";
-import { Loader2 } from "lucide-react";
+import Icon from "@/components/Icon";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { createClient } from "@/utils/supabase/client";
+import { resendVerificationEmailAction } from "@/app/ko/(auth)/_actions/auth-actions";
+import LogoSVG from "@/components/LogoSVG";
+
+interface Message {
+  type: "success" | "error";
+  text: string;
+}
 
 export default function RegistrationConfirmationContent() {
   const [isLoading, setIsLoading] = useState(false);
-  const [message, setMessage] = useState<{
-    type: "success" | "error";
-    text: string;
-  } | null>(null);
+  const [message, setMessage] = useState<Message | null>(null);
   const searchParams = useSearchParams();
   const email = searchParams.get("email");
 
-  const handleSubmit = async () => {
+  const handleResendEmail = async () => {
     if (!email) {
       setMessage({
         type: "error",
@@ -30,28 +33,19 @@ export default function RegistrationConfirmationContent() {
     setMessage(null);
 
     try {
-      const supabase = createClient();
-      const { error } = await supabase.auth.resend({
-        type: "signup",
-        email: email,
-      });
+      const result = await resendVerificationEmailAction({ email });
 
-      if (error) {
-        setMessage({
-          type: "error",
-          text: error.message || "인증 이메일 재전송에 실패했습니다.",
-        });
-      } else {
-        setMessage({
-          type: "success",
-          text: "인증 이메일이 재전송되었습니다. 메일함을 확인해주세요.",
-        });
-      }
+      setMessage({
+        type: result.error ? "error" : "success",
+        text: result.error
+          ? result.message || "인증 이메일 재전송에 실패했습니다."
+          : "인증 이메일이 재전송되었습니다. 메일함을 확인해주세요.",
+      });
     } catch (error) {
-      console.error(error);
+      console.error("인증 이메일 재전송 오류:", error);
       setMessage({
         type: "error",
-        text: "인증 이메일 재전송 중 오류가 발생했습니다.",
+        text: "인증 이메일 재전송 중 오류가 발생했습니다. 다시 시도해주세요.",
       });
     } finally {
       setIsLoading(false);
@@ -93,43 +87,65 @@ export default function RegistrationConfirmationContent() {
 
         {/* 본문 */}
         <div className="relative z-20 mx-auto p-4 pb-12 sm:p-6 sm:pb-16 md:p-8 md:pb-20">
-          <h3 className="text-[24px] font-bold text-base-primary mt-6 mb-6">
-            이메일을 확인해주세요
-          </h3>
-          <p className="text-[16px] text-base-secondary mb-4">
+          <div className="flex flex-col justify-center items-center mt-4 mb-6">
+            <LogoSVG width={64} height={64} />
+            <h1 className="text-2xl font-bold mt-6 mb-6">
+              이메일을 확인해주세요
+            </h1>
+          </div>
+
+          {email && (
+            <p className="text-sm text-muted-foreground mb-4">
+              <span className="font-medium">{email}</span>로 전송되었습니다.
+            </p>
+          )}
+
+          <p className="text-base mb-4">
             인증 링크가 이메일로 전송되었습니다. 받은 편지함을 확인하시고, 계정
             활성화를 위해 이메일의 링크를 클릭해주세요.
           </p>
-          <p className="text-[14px] text-base-secondary mb-6">
+          <p className="text-sm text-muted-foreground mb-6">
             이메일을 확인하지 못한 경우, 스팸 폴더를 확인해주세요.
           </p>
 
           {message && (
             <div
-              className={`mb-4 p-3 rounded text-[14px] ${
+              className={`mb-4 p-3 rounded text-sm ${
                 message.type === "success"
-                  ? "bg-success/10 text-success"
-                  : "bg-error/10 text-error"
+                  ? "bg-status-success/10 text-status-success border border-status-success/20"
+                  : "bg-status-destructive/10 text-status-destructive border border-status-destructive/20"
               }`}
             >
               {message.text}
             </div>
           )}
 
-          <Button
-            onClick={handleSubmit}
-            disabled={isLoading}
-            className="bg-secondary dark:bg-primary hover:bg-secondary/80 dark:hover:bg-primary/80 disabled:bg-muted rounded-md max-w-[300px] h-12 px-12 py-3 text-[16px] font-medium"
-          >
-            {isLoading ? (
-              <>
-                <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                재전송 중...
-              </>
-            ) : (
-              "인증 이메일 재전송"
-            )}
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+            <Button
+              type="submit"
+              onClick={handleResendEmail}
+              disabled={isLoading || !email}
+              className="rounded-md w-full sm:w-auto h-12 px-12 py-3 text-primary-foreground font-medium"
+            >
+              {isLoading ? (
+                <>
+                  <Icon name="loader" className="mr-2 h-4 w-4 animate-spin" />
+                  재전송 중...
+                </>
+              ) : (
+                "인증 이메일 재전송"
+              )}
+            </Button>
+
+            <Button
+              type="button"
+              onClick={() => window.history.back()}
+              variant="secondary"
+              className="rounded-md w-full sm:w-auto h-12 px-12 py-3 font-medium"
+            >
+              이전으로 돌아가기
+            </Button>
+          </div>
         </div>
       </div>
     </main>

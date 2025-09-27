@@ -27,6 +27,10 @@ import LoginIcon from "@/public/icons/24-login.svg";
 import SubscriptionIcon from "@/public/icons/24-subscription.svg";
 import CrownIcon from "@/public/icons/24-crown.svg";
 import LogoIcon from "@/public/icons/Logo.svg";
+import SuccessIcon from "@/public/icons/24-success.svg";
+import ErrorIcon from "@/public/icons/24-error.svg";
+import WarningIcon from "@/public/icons/24-warning.svg";
+import InfoIcon from "@/public/icons/24-info.svg";
 
 // 2. 아이콘 이름과 컴포넌트를 매핑하는 객체를 만듭니다.
 export const ICONS = {
@@ -56,6 +60,10 @@ export const ICONS = {
   subscription: SubscriptionIcon,
   crown: CrownIcon,
   logo: LogoIcon,
+  success: SuccessIcon,
+  error: ErrorIcon,
+  warning: WarningIcon,
+  info: InfoIcon,
 } as const;
 
 // 3. 아이콘 이름 타입을 정의합니다.
