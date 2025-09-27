@@ -9,18 +9,19 @@ import {
   // CardTitle,
 } from "@/components/ui/card";
 import Icon from "@/components/Icon";
-import { getUserProfile } from "../../../(auth)/_data/users";
-import { getAuthenticatedUser } from "../../../(auth)/_data/auth";
+import { getAuthenticatedUserWithProfile } from "@/app/ko/(auth)/_data/queries";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const ProfileCard = async () => {
-  const user = await getAuthenticatedUser();
-  if (!user) {
+  const result = await getAuthenticatedUserWithProfile();
+
+  if (!result.success) {
     return null;
   }
-  const profile = await getUserProfile(user?.id || "");
+
+  const { profile } = result.data;
 
   return (
     <Card className="font-nanum rounded-md">
